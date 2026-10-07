@@ -1,0 +1,1721 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
+
+<title>For You ♡</title>
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet">
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:'Patrick Hand', cursive;
+    background:#eeeeeb;
+}
+
+
+/* =====================================================
+   FULL SCREEN APP
+===================================================== */
+
+#app{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+}
+
+
+/* =====================================================
+   PAGE SYSTEM
+===================================================== */
+
+.page{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateX(25px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease,
+        visibility .6s;
+
+    scrollbar-width:none;
+}
+
+.page::-webkit-scrollbar{
+    display:none;
+}
+
+.page.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(0);
+}
+
+
+/* =====================================================
+   PAGE 1
+===================================================== */
+
+#page1{
+    width:100%;
+    min-height:100%;
+
+    background:#eeeeeb;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:
+        25px
+        20px
+        45px;
+}
+
+
+/* =====================================================
+   PAGE 1 TITLE
+===================================================== */
+
+.intro-title{
+    color:#151515;
+
+    font-size:
+        clamp(29px, 8vw, 38px);
+
+    line-height:1;
+
+    margin-bottom:
+        clamp(22px, 6vw, 32px);
+}
+
+
+/* =====================================================
+   ENVELOPE
+===================================================== */
+
+.envelope-container{
+    position:relative;
+
+    width:
+        clamp(210px, 62vw, 260px);
+
+    height:
+        clamp(140px, 42vw, 170px);
+
+    cursor:pointer;
+
+    margin-bottom:
+        clamp(24px, 7vw, 40px);
+
+    animation:
+        envelopeFloat 2.2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes envelopeFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+
+}
+
+
+/* =====================================================
+   ENVELOPE BODY
+===================================================== */
+
+.envelope{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:90%;
+
+    background:#ef6872;
+
+    border-radius:9px;
+
+    overflow:hidden;
+}
+
+
+/* =====================================================
+   ENVELOPE FOLDS
+===================================================== */
+
+.envelope::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-top:
+        calc(clamp(140px,42vw,170px) * .45)
+        solid transparent;
+
+    border-right:
+        calc(clamp(210px,62vw,260px) / 2)
+        solid #e85d68;
+
+    z-index:3;
+}
+
+.envelope::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-top:
+        calc(clamp(140px,42vw,170px) * .45)
+        solid transparent;
+
+    border-left:
+        calc(clamp(210px,62vw,260px) / 2)
+        solid #e85d68;
+
+    z-index:3;
+}
+
+
+/* =====================================================
+   FLAP
+===================================================== */
+
+.envelope-flap{
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:0;
+    height:0;
+
+    border-left:
+        calc(clamp(210px,62vw,260px) / 2)
+        solid transparent;
+
+    border-right:
+        calc(clamp(210px,62vw,260px) / 2)
+        solid transparent;
+
+    border-top:
+        calc(clamp(140px,42vw,170px) * .46)
+        solid #f17c85;
+
+    z-index:6;
+
+    transform-origin:top center;
+
+    transition:
+        transform .8s ease;
+}
+
+
+/* =====================================================
+   HEART
+===================================================== */
+
+.envelope-heart{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-5%);
+
+    z-index:10;
+
+    color:#ed1c24;
+
+    font-family:Arial,sans-serif;
+
+    font-size:
+        clamp(36px, 11vw, 48px);
+}
+
+
+/* =====================================================
+   OPEN
+===================================================== */
+
+.envelope-container.open
+.envelope-flap{
+
+    transform:
+        rotateX(180deg);
+}
+
+
+/* =====================================================
+   PAGE 1 TEXT
+===================================================== */
+
+.email-hint{
+
+    color:#151515;
+
+    font-size:
+        clamp(25px, 7.5vw, 33px);
+
+    line-height:1.1;
+}
+
+
+/* =====================================================
+   PAGE 2
+===================================================== */
+
+#page2{
+
+    width:100%;
+    height:100%;
+
+    background:#eeeeeb;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:
+        clamp(18px, 5vw, 45px);
+}
+
+
+/* =====================================================
+   PAGE 2 CARD
+===================================================== */
+
+.email-card{
+
+    width:
+        min(90vw, 850px);
+
+    min-height:
+        min(58vh, 470px);
+
+    background:#ed1c27;
+
+    border-radius:
+        clamp(16px, 4vw, 25px);
+
+    color:white;
+
+    padding:
+        clamp(28px, 7vw, 45px)
+        clamp(25px, 7vw, 45px)
+        clamp(30px, 7vw, 45px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.08);
+
+    transform:rotate(-1deg);
+}
+
+
+/* =====================================================
+   EMAIL LABEL
+===================================================== */
+
+.email-label{
+
+    display:block;
+
+    font-size:
+        clamp(18px, 5vw, 24px);
+
+    line-height:1;
+
+    margin-bottom:2px;
+}
+
+.email-value{
+
+    display:block;
+
+    font-size:
+        clamp(18px, 5vw, 24px);
+
+    line-height:1.1;
+
+    margin-bottom:6px;
+}
+
+
+/* =====================================================
+   MESSAGE LABEL
+===================================================== */
+
+.email-message-label{
+
+    margin-top:
+        clamp(22px, 6vw, 35px);
+
+    margin-bottom:10px;
+
+    font-size:
+        clamp(18px, 5vw, 24px);
+
+    line-height:1;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.email-message{
+
+    font-size:
+        clamp(18px, 5vw, 24px);
+
+    line-height:1.3;
+
+    margin-bottom:
+        clamp(40px, 10vw, 75px);
+}
+
+
+/* =====================================================
+   ATTACHMENT
+===================================================== */
+
+.attachment{
+
+    display:block;
+
+    margin:auto;
+
+    border:none;
+
+    background:none;
+
+    color:white;
+
+    font-family:'Patrick Hand', cursive;
+
+    font-size:
+        clamp(18px, 5vw, 24px);
+
+    text-decoration:underline;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.attachment:hover{
+    transform:scale(1.05);
+}
+
+.attachment:active{
+    transform:scale(.92);
+}
+
+
+/* =====================================================
+   PAGE 3
+===================================================== */
+
+#page3{
+
+    width:100%;
+
+    min-height:100%;
+
+    background:#ed1c24;
+
+    color:white;
+
+    padding-bottom:60px;
+}
+
+
+/* =====================================================
+   BUNTING
+===================================================== */
+
+.bunting{
+
+    position:relative;
+
+    width:100%;
+
+    height:
+        clamp(45px, 12vw, 65px);
+
+    display:flex;
+
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+.bunting-line{
+
+    position:absolute;
+
+    top:10px;
+
+    left:-5%;
+
+    width:110%;
+
+    height:2px;
+
+    background:#f5e8d0;
+}
+
+.flag{
+
+    width:0;
+    height:0;
+
+    border-left:
+        clamp(12px, 4vw, 18px)
+        solid transparent;
+
+    border-right:
+        clamp(12px, 4vw, 18px)
+        solid transparent;
+
+    border-top:
+        clamp(23px, 7vw, 34px)
+        solid #eee1c6;
+}
+
+.flag:nth-child(2n){
+    border-top-color:#2fa9ae;
+}
+
+.flag:nth-child(3n){
+    border-top-color:#f0dcb9;
+}
+
+.flag:nth-child(4n){
+    border-top-color:#d74e56;
+}
+
+
+/* =====================================================
+   BIRTHDAY CONTENT
+===================================================== */
+
+.birthday-content{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:
+        15px
+        clamp(20px, 6vw, 40px)
+        50px;
+}
+
+
+
+/* =====================================================
+   PHOTO
+===================================================== */
+
+.photo-area{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:
+        clamp(245px, 68vw, 310px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:5px;
+}
+
+
+.photo-wrapper{
+
+    position:relative;
+
+    width:
+        clamp(195px, 58vw, 230px);
+
+    height:
+        clamp(235px, 68vw, 275px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+
+/* =====================================================
+   FOTO TANPA CARD
+===================================================== */
+
+.person-photo{
+
+    position:relative;
+
+    z-index:4;
+
+    width:
+        clamp(160px, 48vw, 195px);
+
+    height:
+        clamp(195px, 57vw, 225px);
+
+    object-fit:cover;
+
+    /* TANPA CARD */
+    background:transparent;
+
+    border:none;
+
+    border-radius:0;
+
+    box-shadow:none;
+
+    padding:0;
+
+    /* efek goyang */
+    animation:
+        photoSway 3s
+        ease-in-out
+        infinite;
+
+    transform-origin:center center;
+}
+
+
+/* =====================================================
+   ANIMASI FOTO
+===================================================== */
+
+@keyframes photoSway{
+
+    0%{
+        transform:
+            rotate(-3deg)
+            translateY(0);
+    }
+
+    25%{
+        transform:
+            rotate(2deg)
+            translateY(-3px);
+    }
+
+    50%{
+        transform:
+            rotate(-1deg)
+            translateY(0);
+    }
+
+    75%{
+        transform:
+            rotate(3deg)
+            translateY(-3px);
+    }
+
+    100%{
+        transform:
+            rotate(-3deg)
+            translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   ANIMASI FOTO
+===================================================== */
+
+@keyframes photoSway{
+
+    0%{
+        transform:
+            rotate(-3deg)
+            translateY(0);
+    }
+
+    25%{
+        transform:
+            rotate(2deg)
+            translateY(-3px);
+    }
+
+    50%{
+        transform:
+            rotate(-1deg)
+            translateY(0);
+    }
+
+    75%{
+        transform:
+            rotate(3deg)
+            translateY(-3px);
+    }
+
+    100%{
+        transform:
+            rotate(-3deg)
+            translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   PHOTO DECORATION
+===================================================== */
+
+.photo-star{
+
+    position:absolute;
+
+    z-index:8;
+
+    font-family:Arial,sans-serif;
+
+    font-weight:bold;
+
+    -webkit-text-stroke:2px white;
+}
+
+.star-blue{
+
+    color:#1f477d;
+
+    font-size:
+        clamp(30px, 9vw, 42px);
+
+    left:0;
+
+    top:38px;
+}
+
+.star-blue-small{
+
+    color:#1f477d;
+
+    font-size:
+        clamp(21px, 6vw, 28px);
+
+    left:18px;
+
+    top:95px;
+}
+
+.star-red{
+
+    color:#ed1c24;
+
+    font-size:
+        clamp(34px, 10vw, 47px);
+
+    right:0;
+
+    top:20px;
+}
+
+.star-green{
+
+    color:#52a45d;
+
+    font-size:
+        clamp(25px, 7vw, 33px);
+
+    right:3px;
+
+    top:92px;
+}
+
+.star-yellow{
+
+    color:#e6b632;
+
+    font-size:
+        clamp(23px, 7vw, 30px);
+
+    right:17px;
+
+    bottom:45px;
+}
+
+
+/* =====================================================
+   PARTY HAT
+===================================================== */
+
+.party-hat{
+
+    position:absolute;
+
+    z-index:9;
+
+    top:0;
+
+    left:50%;
+
+    transform:
+        translateX(-43%)
+        rotate(-8deg);
+
+    width:
+        clamp(45px, 14vw, 58px);
+
+    height:
+        clamp(60px, 18vw, 75px);
+
+    background:#ded34e;
+
+    clip-path:
+        polygon(
+            50% 0,
+            100% 100%,
+            0 100%
+        );
+
+    border:3px solid white;
+}
+
+.party-hat::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+
+    height:9px;
+
+    background:#ed1c24;
+
+    border-radius:50%;
+
+    top:-5px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+}
+
+.party-hat::after{
+
+    content:"HAPPY\A BIRTHDAY!";
+
+    white-space:pre;
+
+    position:absolute;
+
+    top:29px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    color:#263f7c;
+
+    font-family:Arial,sans-serif;
+
+    font-weight:bold;
+
+    font-size:7px;
+
+    line-height:1;
+
+    text-align:center;
+}
+
+
+/* =====================================================
+   CAKE
+===================================================== */
+
+.cake{
+
+    position:absolute;
+
+    z-index:8;
+
+    left:
+        calc(50% - 125px);
+
+    bottom:10px;
+
+    width:
+        clamp(50px, 16vw, 64px);
+
+    height:
+        clamp(38px, 12vw, 48px);
+
+    background:#f2dfa5;
+
+    border:
+        4px solid #75a6b5;
+
+    border-radius:
+        12px 12px 17px 17px;
+
+    transform:rotate(-4deg);
+}
+
+.cake::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:-14px;
+
+    width:6px;
+
+    height:15px;
+
+    background:#e4af43;
+
+    transform:
+        translateX(-50%);
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.birthday-title{
+
+    color:white;
+
+    font-size:
+        clamp(19px, 5.5vw, 23px);
+
+    line-height:1.2;
+
+    font-weight:400;
+
+    margin-bottom:18px;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.birthday-message{
+
+    color:white;
+
+    font-size:
+        clamp(17px, 4.8vw, 20px);
+
+    line-height:1.38;
+}
+
+.birthday-message p{
+
+    margin-bottom:20px;
+}
+
+
+/* =====================================================
+   FINAL MESSAGE
+===================================================== */
+
+.final-message{
+
+    text-align:center;
+
+    font-size:
+        clamp(20px, 6vw, 24px);
+
+    line-height:1.2;
+
+    margin:
+        40px
+        0
+        28px;
+}
+
+
+/* =====================================================
+   REPLAY
+===================================================== */
+
+.replay-btn{
+
+    display:block;
+
+    margin:auto;
+
+    padding:
+        9px
+        27px;
+
+    border:
+        2px solid white;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    color:white;
+
+    font-family:'Patrick Hand',cursive;
+
+    font-size:
+        clamp(18px, 5vw, 21px);
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.replay-btn:active{
+    transform:scale(.9);
+}
+
+.replay-btn:hover{
+    background:white;
+    color:#ed1c24;
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+.music-button{
+
+    position:fixed;
+
+    right:14px;
+    bottom:14px;
+
+    z-index:100;
+
+    width:44px;
+    height:44px;
+
+    border-radius:50%;
+
+    border:
+        2px solid rgba(255,255,255,.8);
+
+    background:
+        rgba(0,0,0,.16);
+
+    color:white;
+
+    font-size:19px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   FLOATING HEART
+===================================================== */
+
+.heart{
+
+    position:fixed;
+
+    bottom:-30px;
+
+    z-index:2;
+
+    color:
+        rgba(255,255,255,.35);
+
+    pointer-events:none;
+
+    animation:
+        heartFloat linear forwards;
+}
+
+@keyframes heartFloat{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translateY(0);
+    }
+
+    15%{
+        opacity:.6;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translateY(-110vh)
+            rotate(30deg);
+    }
+}
+
+
+/* =====================================================
+   TABLET / DESKTOP
+===================================================== */
+
+@media(min-width:700px){
+
+    .email-card{
+
+        width:
+            min(80vw, 850px);
+    }
+
+    .birthday-message{
+
+        max-width:750px;
+
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+}
+
+
+/* =====================================================
+   SHORT SCREEN
+===================================================== */
+
+@media(max-height:650px){
+
+    #page1{
+
+        padding-top:15px;
+        padding-bottom:25px;
+    }
+
+    .intro-title{
+
+        margin-bottom:15px;
+    }
+
+    .envelope-container{
+
+        transform:scale(.78);
+
+        margin-bottom:0;
+    }
+
+    .email-hint{
+
+        font-size:24px;
+    }
+
+    .photo-area{
+
+        min-height:225px;
+    }
+
+    .photo-wrapper{
+
+        transform:scale(.85);
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div id="app">
+
+
+<!-- =====================================================
+     PAGE 1
+===================================================== -->
+
+<section
+    id="page1"
+    class="page active">
+
+    <h1 class="intro-title">
+        hey cayang!
+    </h1>
+
+
+    <div
+        class="envelope-container"
+        id="envelope"
+        onclick="openEnvelope()">
+
+        <div class="envelope">
+
+            <div
+                class="envelope-flap">
+            </div>
+
+            <div
+                class="envelope-heart">
+
+                ♥
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="email-hint">
+
+        you've got new emails
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 2
+===================================================== -->
+
+<section
+    id="page2"
+    class="page">
+
+    <div class="email-card">
+
+        <span class="email-label">
+            From:
+        </span>
+
+        <span class="email-value">
+            juwi pacar kamu paling imut ♡
+        </span>
+
+        <span class="email-label">
+            To:
+        </span>
+
+        <span class="email-value">
+            cayang
+        </span>
+
+        <div class="email-message-label">
+            Message:
+        </div>
+
+        <div class="email-message">
+            suprise for YOU ceng!
+        </div>
+
+        <button
+            class="attachment"
+            onclick="openBirthday()">
+
+            see attachment
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 3
+===================================================== -->
+
+<section
+    id="page3"
+    class="page">
+
+    <div class="bunting">
+
+        <div class="bunting-line"></div>
+
+        <div class="flag"></div>
+        <div class="flag"></div>
+        <div class="flag"></div>
+        <div class="flag"></div>
+        <div class="flag"></div>
+        <div class="flag"></div>
+        <div class="flag"></div>
+        <div class="flag"></div>
+        <div class="flag"></div>
+        <div class="flag"></div>
+        <div class="flag"></div>
+        <div class="flag"></div>
+
+    </div>
+
+
+    <div class="birthday-content">
+
+
+        <!-- FOTO -->
+
+        <div class="photo-area">
+
+            <div class="photo-wrapper">
+
+                <img
+                    src="foto.png"
+                    class="person-photo"
+                    alt="Foto">
+
+            </div>
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <h1 class="birthday-title">
+
+            happy birthday cayangg
+
+        </h1>
+
+
+        <!-- MESSAGE -->
+
+        <div class="birthday-message">
+
+            <p>
+semoga di umur kamu yang sekarang kamu bisa jadi pribadi yang lebih baik lagi, maaf aku gabisa kasih ucapan lgsg sama kamu, aku cuman mau bilang makasi sama kamu, udah banyak berusaha sama aku, udah selalu sabar ngadepin sikap aku yang masi kaya anak anak gini, pls jangan pernah berubah sama aku yaa sengg, aku bener bener sayang banget sama kamu, sama aku terus yaa sengg, jangan pernah capek pliss ngadepin kekanak kanakan aku yaa whehehe, aku pengen ucapin kamu lgsg deh pengen peluk kamu, pengen kasih kmu suprise, hmm sedih aku kangen banget sayang sm kamu huhu:( , jangan nakal nakal ya kamu disana jaga hati jaga mata, inget aku disini yang selalu ada buat kamu yaa, happy birthday skali lagi sayang 
+
+            </p>
+
+
+
+
+
+            <div class="final-message">
+
+
+               -with love juwi ♡
+            </div>
+
+
+            <button
+                class="replay-btn"
+                onclick="replay()">
+
+                ↻ Replay
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<audio
+    id="music"
+    loop
+    preload="auto">
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<button
+    class="music-button"
+    id="musicButton"
+    onclick="toggleMusic()">
+
+    ♪
+
+</button>
+
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   ELEMENT
+===================================================== */
+
+const page1 =
+    document.getElementById("page1");
+
+const page2 =
+    document.getElementById("page2");
+
+const page3 =
+    document.getElementById("page3");
+
+const envelope =
+    document.getElementById("envelope");
+
+const music =
+    document.getElementById("music");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+let musicPlaying = false;
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+function startMusic(){
+
+    music.volume = .55;
+
+    music.play()
+
+    .then(() => {
+
+        musicPlaying = true;
+        musicButton.innerHTML = "♫";
+
+    })
+
+    .catch(() => {
+
+        musicPlaying = false;
+
+    });
+
+}
+
+
+/* =====================================================
+   AUTOPLAY
+===================================================== */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        startMusic();
+
+    }
+);
+
+
+/* =====================================================
+   FALLBACK MOBILE
+===================================================== */
+
+document.addEventListener(
+    "click",
+    () => {
+
+        if(!musicPlaying){
+
+            startMusic();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   TOGGLE MUSIC
+===================================================== */
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play();
+
+        musicPlaying = true;
+
+        musicButton.innerHTML = "♫";
+
+    }
+
+    else{
+
+        music.pause();
+
+        musicPlaying = false;
+
+        musicButton.innerHTML = "♪";
+
+    }
+
+}
+
+
+/* =====================================================
+   PAGE 1 → PAGE 2
+===================================================== */
+
+function openEnvelope(){
+
+    envelope.classList.add("open");
+
+    startMusic();
+
+
+    setTimeout(() => {
+
+        page1.classList.remove("active");
+
+        page2.classList.add("active");
+
+    },650);
+
+}
+
+
+/* =====================================================
+   PAGE 2 → PAGE 3
+===================================================== */
+
+function openBirthday(){
+
+    page2.classList.remove("active");
+
+    page3.classList.add("active");
+
+    page3.scrollTop = 0;
+
+    startMusic();
+
+}
+
+
+/* =====================================================
+   REPLAY
+===================================================== */
+
+function replay(){
+
+    page1.classList.remove("active");
+
+    page2.classList.remove("active");
+
+    page3.classList.remove("active");
+
+
+    page2.scrollTop = 0;
+
+    page3.scrollTop = 0;
+
+
+    envelope.classList.remove("open");
+
+
+    setTimeout(() => {
+
+        page1.classList.add("active");
+
+    },100);
+
+
+    startMusic();
+
+}
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+function createHeart(){
+
+    if(
+        !page3.classList.contains("active")
+    ){
+
+        return;
+
+    }
+
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+
+    heart.innerHTML =
+        Math.random() > .5
+        ? "♡"
+        : "♥";
+
+
+    heart.style.left =
+        Math.random() * 100 + "%";
+
+
+    heart.style.fontSize =
+        (12 + Math.random() * 12) + "px";
+
+
+    heart.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    },10000);
+
+}
+
+
+setInterval(
+    createHeart,
+    1300
+);
+
+
+/* =====================================================
+   PREVENT DOUBLE TAP ZOOM
+===================================================== */
+
+let lastTouchEnd = 0;
+
+document.addEventListener(
+    "touchend",
+    function(event){
+
+        const now =
+            Date.now();
+
+        if(
+            now - lastTouchEnd <= 300
+        ){
+
+            event.preventDefault();
+
+        }
+
+        lastTouchEnd = now;
+
+    },
+    false
+);
+
+</script>
+
+</body>
+
+</html>
